@@ -20,11 +20,11 @@ def PnP(Pc, Pw, K=np.eye(3)):
 
     R = np.eye(3)
     t = np.zeros([3])
-    print(Pw[:,:2])
+    #print(Pw[:,:2])
     hmatrix = est_homography(Pw[:,:2], Pc)
     hprime = np.linalg.inv(K)@hmatrix
-    print(hmatrix)
-    print(np.linalg.inv(K))
+    #print(hmatrix)
+    #print(np.linalg.inv(K))
     #print("hprime", hprime)
     h1prime = hprime[:,0]
     h2prime = hprime[:,1]
@@ -37,7 +37,7 @@ def PnP(Pc, Pw, K=np.eye(3)):
     S = np.eye(3)
     S[2][2] = np.linalg.det(U@V)
     R = np.matrix(U@S@V)
-    print("DET R:", np.linalg.det(R))
+    #print("DET R:", np.linalg.det(R))
     t = h3prime / np.linalg.norm(h1prime)
     t = np.transpose(-np.transpose(R)@t)
     R = np.transpose(R)
